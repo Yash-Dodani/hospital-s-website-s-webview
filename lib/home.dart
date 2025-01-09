@@ -3,6 +3,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nice_children_hospital/contactUs.dart';
+import 'package:nice_children_hospital/webScreen.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HospitalHomePage extends StatefulWidget {
@@ -13,37 +14,12 @@ class HospitalHomePage extends StatefulWidget {
 }
 
 class _HospitalHomePageState extends State<HospitalHomePage> {
-  final GlobalKey<ScaffoldState> _key = GlobalKey<ScaffoldState>();
-  late InAppWebViewController _webViewController;
   int _currentBuildingSlide = 0;
   int _currentStaffSlide = 0;
   Future<void> _launchURL(String url) async {
     if (!await launchUrl(Uri.parse(url))) {
       throw Exception('Could not launch $url');
     }
-  }
-
-  void _loadUrlWithInjection(String url) {
-    _webViewController
-        .loadUrl(urlRequest: URLRequest(url: WebUri(url)))
-        .then((_) {
-      // Wait for page to load before injecting
-      Future.delayed(const Duration(milliseconds: 500), _injectJavaScript);
-    });
-  }
-
-  void _injectJavaScript() {
-    String jsScript = """
-    let navbar = document.getElementById('ftco-navbar');
-    navbar.style.display = "none";
-    let footer = document.querySelector("footer");
-    footer.style.display = "none";
-    let img = document.querySelector('.img-fluid');
-    let wrap = document.querySelector('.wrap');
-    img.style.display = "none";
-    wrap.style.display = "none";
-    """;
-    _webViewController.evaluateJavascript(source: jsScript);
   }
 
   void _showAppointmentModal(BuildContext context) {
@@ -153,76 +129,122 @@ class _HospitalHomePageState extends State<HospitalHomePage> {
             ),
             ListTile(
               leading: Icon(Icons.home_filled),
-              title: Text("HOME"),
+              title: Text("Home"),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => HospitalHomePage()),
+                );
+              },
             ),
             SizedBox(height: 10),
             ListTile(
               leading: Icon(Icons.adobe_outlined),
-              title: Text("ABOUT"),
+              title: Text("About"),
               onTap: () {
-                _loadUrlWithInjection(
-                    "https://nicechildrenhospital.com/about.php");
-                Navigator.pop(context);
+                Navigator.pop(context); // Close the drawer
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => WebViewPage(
+                      url: "https://nicechildrenhospital.com/about.php",
+                      title: "ABOUT",
+                    ),
+                  ),
+                );
               },
             ),
             SizedBox(height: 10),
             ListTile(
               leading: Icon(Icons.group),
-              title: Text("OUR TEAM"),
+              title: Text("Team"),
               onTap: () {
-                _loadUrlWithInjection(
-                    "https://nicechildrenhospital.com/team.php");
-                Navigator.pop(context);
+                Navigator.pop(context); // Close the drawer
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => WebViewPage(
+                      url: "https://nicechildrenhospital.com/team.php",
+                      title: "Team",
+                    ),
+                  ),
+                );
               },
             ),
             SizedBox(height: 10),
             ListTile(
-              leading: Icon(Icons.horizontal_split_sharp),
-              title: Text("SERVICES"),
+              leading: Icon(Icons.horizontal_split_outlined),
+              title: Text("Services"),
               onTap: () {
-                _loadUrlWithInjection(
-                    "https://nicechildrenhospital.com/services.php");
-                Navigator.pop(context);
+                Navigator.pop(context); // Close the drawer
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => WebViewPage(
+                      url: "https://nicechildrenhospital.com/services.php",
+                      title: "Services",
+                    ),
+                  ),
+                );
               },
             ),
             SizedBox(height: 10),
             ListTile(
-              leading: Icon(Icons.table_bar_rounded),
-              title: Text("ACHIEVEMENT"),
+              leading: Icon(Icons.wifi_channel_rounded),
+              title: Text("Achivements"),
               onTap: () {
-                _loadUrlWithInjection(
-                    "https://nicechildrenhospital.com/achi.php");
-                Navigator.pop(context);
+                Navigator.pop(context); // Close the drawer
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => WebViewPage(
+                      url: "https://nicechildrenhospital.com/achi.php",
+                      title: "Achivements",
+                    ),
+                  ),
+                );
               },
             ),
             SizedBox(height: 10),
             ListTile(
-              leading: Icon(Icons.paragliding),
-              title: Text("PRAISE"),
+              leading: Icon(Icons.park_sharp),
+              title: Text("Praise"),
               onTap: () {
-                _loadUrlWithInjection(
-                    "https://nicechildrenhospital.com/testi.php");
-                Navigator.pop(context);
+                Navigator.pop(context); // Close the drawer
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => WebViewPage(
+                      url: "https://nicechildrenhospital.com/testi.php",
+                      title: "Praise",
+                    ),
+                  ),
+                );
               },
             ),
             SizedBox(height: 10),
             ListTile(
-              leading: Icon(Icons.dew_point),
-              title: Text("WHAT WE DO"),
+              leading: Icon(Icons.whatshot),
+              title: Text("What We Do"),
               onTap: () {
-                _loadUrlWithInjection(
-                    "https://nicechildrenhospital.com/department.php");
-                Navigator.pop(context);
+                Navigator.pop(context); // Close the drawer
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => WebViewPage(
+                      url: "https://nicechildrenhospital.com/department.php",
+                      title: "What We Do",
+                    ),
+                  ),
+                );
               },
             ),
             SizedBox(height: 10),
             ListTile(
               leading: Icon(Icons.contact_emergency),
-              title: Text("CONTACT"),
+              title: Text("Contact Us"),
               onTap: () {
-                Future.delayed(const Duration(milliseconds: 500), () {
-                  _injectJavaScript();
-                });
                 Navigator.push(
                     context,
                     MaterialPageRoute(
