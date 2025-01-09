@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nice_children_hospital/appintment.dart';
-import 'package:nice_children_hospital/webUi.dart';
+import 'package:nice_children_hospital/home.dart';
 
 void main() {
   runApp(const MyApp());
@@ -9,7 +8,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -19,7 +17,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.orange),
         useMaterial3: true,
       ),
-      home: NiceHospital(),
+      home: HospitalHomePage(),
     );
   }
 }
