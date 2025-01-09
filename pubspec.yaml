@@ -40,6 +40,7 @@ dependencies:
   font_awesome_flutter: ^10.8.0
   maps_launcher: ^3.0.0+1
   google_fonts: ^6.2.1
+  http: ^1.2.2
 
 dev_dependencies:
   flutter_test:
