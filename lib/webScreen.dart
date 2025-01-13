@@ -33,6 +33,13 @@ class _WebViewPageState extends State<WebViewPage> {
     
     let wrap = document.querySelector('.wrap');
     if (wrap) wrap.style.display = "none";
+
+    // let hero-wrap-2 = document.querySelector('.hero-wrap-2');
+    // hero-wrap-2.style.display = "none";
+
+    
+    // let hero-wrap-2 = document.querySelector('.hero-wrap-2');
+    // if (hero-wrap-2) hero-wrap-2.style.display = "none";
     """;
     _webViewController.evaluateJavascript(source: jsScript);
   }

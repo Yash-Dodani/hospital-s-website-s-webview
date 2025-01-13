@@ -320,7 +320,6 @@ class _HospitalHomePageState extends State<HospitalHomePage> {
       children: [
         CarouselSlider(
           options: CarouselOptions(
-            height: 400,
             viewportFraction: 1.0,
             autoPlay: true,
             onPageChanged: (index, reason) {
@@ -328,11 +327,38 @@ class _HospitalHomePageState extends State<HospitalHomePage> {
             },
           ),
           items: [1, 2]
-              .map((i) => Image.asset(
-                    'assets/images/hospital$i.jpg',
-                    fit: BoxFit.cover,
-                    width: double.infinity,
-                  ))
+              .map(
+                (i) => Stack(
+                  children: [
+                    Image.asset(
+                      'assets/images/hospital$i.jpg',
+                    ),
+                    Center(
+                      child: Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: Text(
+                          i == 2
+                              ? "NICE CHILDREN HOSPITAL For Intact Survival Of Sick Neonates"
+                              : "Welcome to our NICE CHILDREN HOSPITAL", // Text for each image
+                          style: TextStyle(
+                            color: Colors.white, // Text color
+                            fontSize: 20, // Font size
+                            fontWeight: FontWeight.bold, // Font weight
+                            shadows: [
+                              Shadow(
+                                offset: Offset(6, 2),
+                                blurRadius: 4,
+                                color: Colors.black
+                                    .withOpacity(0.7), // Text shadow
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              )
               .toList(),
         ),
         Positioned(
@@ -377,34 +403,36 @@ class _HospitalHomePageState extends State<HospitalHomePage> {
             ),
           ),
           const SizedBox(height: 16),
-          RichText(
-            text: TextSpan(
-              style: TextStyle(
-                fontSize: 16,
-                height: 1.5,
-                color: Colors.black87,
-              ),
-              children: [
-                TextSpan(
+          Center(
+            child: RichText(
+              text: TextSpan(
+                style: TextStyle(
+                  fontSize: 16,
+                  height: 1.5,
+                  color: Colors.black87,
+                ),
+                children: [
+                  TextSpan(
+                      text:
+                          'Nice Children Hospital Is At The Forefront Of Dedicated Neonatal Care, Committed To Provide Specialized Treatment To Prematurely Delivered And Extremely Low-birth-weight Babies. Our State-of-the-art Facility, Also Known As "little Miracles Haven", Stands As A Testament To Our Unwavering Dedication To The Well-being Of These Tiny Neonates.\n\n'),
+                  TextSpan(
+                      text:
+                          'Our Mission Is To Create A Haven For Tiny Miracles, Where Every Child Has The Opportunity To Grow Into A Healthy, Normal Individual. '),
+                  TextSpan(
                     text:
-                        'Nice Children Hospital Is At The Forefront Of Dedicated Neonatal Care, Committed To Provide Specialized Treatment To Prematurely Delivered And Extremely Low-birth-weight Babies. Our State-of-the-art Facility, Also Known As "little Miracles Haven", Stands As A Testament To Our Unwavering Dedication To The Well-being Of These Tiny Neonates.\n\n'),
-                TextSpan(
-                    text:
-                        'Our Mission Is To Create A Haven For Tiny Miracles, Where Every Child Has The Opportunity To Grow Into A Healthy, Normal Individual. '),
-                TextSpan(
-                  text:
-                      'Our Aim Is To Have An Initial Revival Of Sick Neonates',
-                  style: TextStyle(
-                    color: Color(0xFFFF9933),
-                    fontSize: 17,
-                    fontWeight: FontWeight.bold,
+                        'Our Aim Is To Have An Initial Revival Of Sick Neonates',
+                    style: TextStyle(
+                      color: Color(0xFFFF9933),
+                      fontSize: 17,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
-                TextSpan(
-                  text:
-                      ' Nice Children Hospital, Where Every Small Miracle Receives The Care And Attention They Deserve.',
-                ),
-              ],
+                  TextSpan(
+                    text:
+                        ' Nice Children Hospital, Where Every Small Miracle Receives The Care And Attention They Deserve.',
+                  ),
+                ],
+              ),
             ),
           ),
         ],
@@ -508,7 +536,7 @@ class FacilityCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(8),
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withOpacity(0.1),
+            color: Colors.grey.withOpacity(0.5),
             blurRadius: 10,
             spreadRadius: 2,
           ),
@@ -528,12 +556,14 @@ class FacilityCard extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 12),
-          Text(
-            description,
-            style: const TextStyle(
-              fontSize: 16,
-              height: 1.6,
-              color: Colors.black87,
+          Center(
+            child: Text(
+              description,
+              style: const TextStyle(
+                fontSize: 16,
+                height: 1.6,
+                color: Colors.black87,
+              ),
             ),
           ),
         ],
