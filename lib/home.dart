@@ -127,8 +127,16 @@ class _HospitalHomePageState extends State<HospitalHomePage> {
               ),
             ),
             ListTile(
-              leading: Icon(Icons.home_filled),
-              title: Text("Home"),
+              leading: Image.asset(
+                "assets/icons/drawer/house.png",
+                height: 28,
+              ),
+              title: Text(
+                "Home",
+                style: GoogleFonts.poppins(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
               onTap: () {
                 Navigator.pop(context);
                 Navigator.push(
@@ -139,8 +147,16 @@ class _HospitalHomePageState extends State<HospitalHomePage> {
             ),
             SizedBox(height: 10),
             ListTile(
-              leading: Icon(Icons.adobe_outlined),
-              title: Text("About"),
+              leading: Image.asset(
+                "assets/icons/drawer/about.png",
+                height: 28,
+              ),
+              title: Text(
+                "About",
+                style: GoogleFonts.poppins(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
               onTap: () {
                 Navigator.pop(context); // Close the drawer
                 Navigator.push(
@@ -156,8 +172,16 @@ class _HospitalHomePageState extends State<HospitalHomePage> {
             ),
             SizedBox(height: 10),
             ListTile(
-              leading: Icon(Icons.group),
-              title: Text("Team"),
+              leading: Image.asset(
+                "assets/icons/drawer/team.png",
+                height: 28,
+              ),
+              title: Text(
+                "Team",
+                style: GoogleFonts.poppins(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
               onTap: () {
                 Navigator.pop(context); // Close the drawer
                 Navigator.push(
@@ -173,8 +197,16 @@ class _HospitalHomePageState extends State<HospitalHomePage> {
             ),
             SizedBox(height: 10),
             ListTile(
-              leading: Icon(Icons.horizontal_split_outlined),
-              title: Text("Services"),
+              leading: Image.asset(
+                "assets/icons/drawer/service.png",
+                height: 28,
+              ),
+              title: Text(
+                "Services",
+                style: GoogleFonts.poppins(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
               onTap: () {
                 Navigator.pop(context); // Close the drawer
                 Navigator.push(
@@ -190,8 +222,16 @@ class _HospitalHomePageState extends State<HospitalHomePage> {
             ),
             SizedBox(height: 10),
             ListTile(
-              leading: Icon(Icons.wifi_channel_rounded),
-              title: Text("Achivements"),
+              leading: Image.asset(
+                "assets/icons/drawer/achive.png",
+                height: 28,
+              ),
+              title: Text(
+                "Achivements",
+                style: GoogleFonts.poppins(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
               onTap: () {
                 Navigator.pop(context); // Close the drawer
                 Navigator.push(
@@ -207,8 +247,16 @@ class _HospitalHomePageState extends State<HospitalHomePage> {
             ),
             SizedBox(height: 10),
             ListTile(
-              leading: Icon(Icons.park_sharp),
-              title: Text("Praise"),
+              leading: Image.asset(
+                "assets/icons/drawer/praise.png",
+                height: 28,
+              ),
+              title: Text(
+                "Praise",
+                style: GoogleFonts.poppins(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
               onTap: () {
                 Navigator.pop(context); // Close the drawer
                 Navigator.push(
@@ -224,8 +272,16 @@ class _HospitalHomePageState extends State<HospitalHomePage> {
             ),
             SizedBox(height: 10),
             ListTile(
-              leading: Icon(Icons.whatshot),
-              title: Text("What We Do"),
+              leading: Image.asset(
+                "assets/icons/drawer/who.png",
+                height: 28,
+              ),
+              title: Text(
+                "What We Do",
+                style: GoogleFonts.poppins(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
               onTap: () {
                 Navigator.pop(context); // Close the drawer
                 Navigator.push(
@@ -241,8 +297,16 @@ class _HospitalHomePageState extends State<HospitalHomePage> {
             ),
             SizedBox(height: 10),
             ListTile(
-              leading: Icon(Icons.contact_emergency),
-              title: Text("Contact Us"),
+              leading: Image.asset(
+                "assets/icons/drawer/contact.png",
+                height: 28,
+              ),
+              title: Text(
+                "Contact Us",
+                style: GoogleFonts.poppins(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
               onTap: () {
                 Navigator.push(
                     context,
@@ -257,7 +321,11 @@ class _HospitalHomePageState extends State<HospitalHomePage> {
                 left: 30.6,
                 right: 30.6,
               ),
-              child: ElevatedButton(
+              child: ElevatedButton.icon(
+                icon: Image.asset(
+                  "assets/icons/drawer/call.png",
+                  width: 30,
+                ),
                 style: ElevatedButton.styleFrom(
                   elevation: 5,
                   foregroundColor: Colors.white,
@@ -270,12 +338,13 @@ class _HospitalHomePageState extends State<HospitalHomePage> {
                   Navigator.pop(context); // Close the drawer first
                   _showAppointmentModal(context); // Show the appointment modal
                 },
-                child: Padding(
-                  padding: const EdgeInsets.all(10.0),
+                label: Padding(
+                  padding: const EdgeInsets.all(5.0),
                   child: Text(
                     "Take an Appointment",
                     style: GoogleFonts.poppins(
-                      fontSize: 15,
+                      fontSize: 14,
+                      color: Colors.black,
                     ),
                   ),
                 ),
